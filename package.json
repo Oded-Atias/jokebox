@@ -1,12 +1,21 @@
 {
   "name": "jokes-sender-bot",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "WhatsApp bot that replies with a random joke when a user sends a trigger message",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.ts",
+    "dev": "node --watch src/server.ts",
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
 }
