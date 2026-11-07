@@ -11,8 +11,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm start`: run the server (`node src/server.ts`).
 - `npm run dev`: run with restart on file changes (`node --watch`).
 - `npm run typecheck`: type-check with `tsc --noEmit`. Run it after changes; Node will happily run code with type errors.
+- `npm test`: run the Vitest suite once (`vitest run`).
+- `npm run test:watch`: run Vitest in watch mode, re-running affected tests on every save.
 
-There are no tests, linter or formatter yet.
+There is no linter or formatter yet.
+
+## Testing
+
+The project is built with TDD: every change starts with a failing test, then the minimal code to make it pass, then a refactor. Tests use Vitest with its default configuration, so there is no `vitest.config.ts`. Test files are named `*.test.ts` and live next to the code they test (`src/foo.ts` is tested by `src/foo.test.ts`). Import `describe`, `it` and `expect` explicitly from `"vitest"`; globals are not enabled.
 
 ## TypeScript without a build step
 
