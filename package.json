@@ -1,5 +1,5 @@
 {
-  "name": "jokes-sender-bot",
+  "name": "jokebox",
   "version": "1.0.0",
   "description": "WhatsApp bot that replies with a random joke when a user sends a trigger message",
   "type": "module",

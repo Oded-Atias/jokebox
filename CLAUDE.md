@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project state
 
-`jokes-sender-bot` is at the scaffolding stage. The only source file is `src/server.ts`, which currently just logs "Hello, World!". There is no bot logic, joke source or messaging integration yet.
+`jokebox` is at the scaffolding stage. The only source file is `src/server.ts`, which currently just logs "Hello, World!". There is no bot logic, joke source or messaging integration yet.
 
 ## Commands
 
