@@ -11,13 +11,16 @@
     "dev": "node --watch src/server.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^26.6.6",
+    "prettier": "^3.9.10",
     "typescript": "^7.0.2",
     "vitest": "^5.1.0"
   }

@@ -13,8 +13,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run typecheck`: type-check with `tsc --noEmit`. Run it after changes; Node will happily run code with type errors.
 - `npm test`: run the Vitest suite once (`vitest run`).
 - `npm run test:watch`: run Vitest in watch mode, re-running affected tests on every save.
+- `npm run format`: format the whole repo with Prettier (`prettier --write .`).
+- `npm run format:check`: report files that are not formatted, without changing them.
 
-There is no linter or formatter yet.
+Formatting uses Prettier with the same `.prettierrc` as the work projects. `.vscode/settings.json` turns on format-on-save with the Prettier extension (`esbenp.prettier-vscode`). There is no linter yet.
 
 ## Testing
 
