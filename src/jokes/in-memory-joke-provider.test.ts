@@ -54,4 +54,10 @@ describe('createInMemoryJokeProvider', () => {
       'Cannot create a joke provider from list with empty jokes'
     );
   });
+
+  it('should throw an error if the jokes list has whitespace jokes', async () => {
+    expect(() => createInMemoryJokeProvider(['   ', 'Another joke'], () => 0)).toThrow(
+      'Cannot create a joke provider from list with empty jokes'
+    );
+  });
 });
