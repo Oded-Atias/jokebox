@@ -1,7 +1,7 @@
 {
   "name": "jokebox",
   "version": "1.0.0",
-  "description": "WhatsApp bot that replies with a random joke when a user sends a trigger message",
+  "description": "WhatsApp bot that sends a random joke each time the user taps its new-joke button",
   "type": "module",
   "engines": {
     "node": ">=24"
