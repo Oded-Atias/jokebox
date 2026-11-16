@@ -1,5 +1,7 @@
 {
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "files.eol": "\n"
+  "files.eol": "\n",
+  "js/ts.tsdk.path": "node_modules\\typescript",
+  "js/ts.experimental.useTsgo": true
 }
