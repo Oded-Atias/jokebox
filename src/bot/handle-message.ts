@@ -1,0 +1,21 @@
+import type { JokeProvider } from '../jokes/types.ts';
+import { NEW_JOKE_ASK } from './constant.ts';
+import type { MessageInput, MessageReply } from './types.ts';
+import { formantTextReply } from './utils.ts';
+
+type HandleMessageFunction = (input: MessageInput) => Promise<MessageReply>;
+
+export function createMessageHandler(provider: JokeProvider): HandleMessageFunction {
+  return async function (input) {
+    if (input.kind === 'text') {
+      return {
+        text: formantTextReply(input.text),
+        action: {
+          kind: 'new-joke',
+          title: NEW_JOKE_ASK,
+        },
+      };
+    }
+    throw new Error('Not implemented yet');
+  };
+}
