@@ -3,9 +3,9 @@ import { NEW_JOKE_ASK } from './constants.ts';
 import type { MessageInput, MessageReply } from './types.ts';
 import { formatTextReply } from './utils.ts';
 
-type HandleMessageFunction = (input: MessageInput) => Promise<MessageReply>;
+type MessageHandler = (input: MessageInput) => Promise<MessageReply>;
 
-export function createMessageHandler(provider: JokeProvider): HandleMessageFunction {
+export function createMessageHandler(provider: JokeProvider): MessageHandler {
   return async function (input) {
     if (input.kind === 'text') {
       return {
