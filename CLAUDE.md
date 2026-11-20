@@ -29,6 +29,7 @@ Node (>=24, developed on v26) runs `.ts` files directly via type stripping, so t
 ## Code style
 
 - **Never write comments.** This applies to every file in the repo, including config files such as `tsconfig.json`. Make the code explain itself through names and structure instead.
+- **Put a blank line after every statement**, at every level: between top-level declarations, inside function bodies, inside test bodies and inside `if` blocks. The only exception is the `import` lines at the top of a file, which stay together without blank lines between them. Prettier does not enforce this, so check it by hand.
 
 ## Configuration
 

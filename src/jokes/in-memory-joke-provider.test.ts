@@ -1,5 +1,4 @@
 import { describe, expect, it } from 'vitest';
-
 import { createInMemoryJokeProvider } from './in-memory-joke-provider.ts';
 
 const jokes = [
