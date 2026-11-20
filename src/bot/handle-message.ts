@@ -1,5 +1,5 @@
 import type { JokeProvider } from '../jokes/types.ts';
-import { NEW_JOKE_ASK } from './constant.ts';
+import { NEW_JOKE_ASK } from './constants.ts';
 import type { MessageInput, MessageReply } from './types.ts';
 import { formatTextReply } from './utils.ts';
 
