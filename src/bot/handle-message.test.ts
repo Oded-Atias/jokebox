@@ -16,6 +16,16 @@ const EXPECTED_NEW_JOKE_ACTION: NewJokeMessageAction = {
   title: 'Send me a new joke',
 };
 
+const LONG_TEXT_INPUT: TextMessageInput = {
+  kind: 'text',
+  text: '01234567890123456789012345678901234567890123456789X',
+};
+
+const MAX_LENGTH_TEXT_INPUT: TextMessageInput = {
+  kind: 'text',
+  text: '01234567890123456789012345678901234567890123456789',
+};
+
 describe('handleMessage', () => {
   it('should quote the input text in the reply', async () => {
     const handleMessage = createMessageHandler(JOKE_PROVIDER);
@@ -49,5 +59,25 @@ describe('handleMessage', () => {
     const result = await handleMessage(NEW_JOKE_INPUT);
 
     expect(result.action).toEqual(EXPECTED_NEW_JOKE_ACTION);
+  });
+
+  it('should truncate a quote longer than 50 characters', async () => {
+    const handleMessage = createMessageHandler(JOKE_PROVIDER);
+
+    const result = await handleMessage(LONG_TEXT_INPUT);
+
+    expect(result.text).toBe(
+      'You said "01234567890123456789012345678901234567890123456789...", but all I can do is tell jokes. Tap the button below for a random joke.'
+    );
+  });
+
+  it('should not truncate a quote of exactly 50 characters', async () => {
+    const handleMessage = createMessageHandler(JOKE_PROVIDER);
+
+    const result = await handleMessage(MAX_LENGTH_TEXT_INPUT);
+
+    expect(result.text).toBe(
+      'You said "01234567890123456789012345678901234567890123456789", but all I can do is tell jokes. Tap the button below for a random joke.'
+    );
   });
 });
