@@ -4,7 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project state
 
-`jokebox` is at the scaffolding stage. The only source file is `src/server.ts`, which currently just logs "Hello, World!". There is no bot logic, joke source or messaging integration yet.
+`jokebox` is built in layers, each depending only on the one below it through a contract:
+
+- `src/jokes/`: done. `createInMemoryJokeProvider(jokes, random)` returns a `JokeProvider` (`src/jokes/types.ts`). It throws at creation if the list is empty or holds a blank joke, so a bad list fails at startup. `random` is injected so tests can control it.
+- `src/bot/`: done. `createMessageHandler(provider)` returns a `MessageHandler` that turns a `MessageInput` (`{ kind: 'text', text }` or `{ kind: 'new-joke' }`) into a `MessageReply` (`{ text, action }`). Every reply carries the `new-joke` action. The bot knows nothing about WhatsApp or buttons. Its tests use a fake `JokeProvider`, not the in-memory one.
+- `src/whatsapp/`: not started. It will translate Meta's webhook JSON into `MessageInput`, and `MessageReply` into an interactive message with one reply button.
+- `src/server.ts`: still only logs "Hello, World!". It will create the provider and the handler once at startup and wire them to `whatsapp/`.
+
+Open: when `getRandomJoke` rejects at runtime, the handler rejects too and the user gets no reply. Deciding where to catch it was deferred until a provider that can fail exists.
 
 ## Commands
 
