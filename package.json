@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "WhatsApp bot that sends a random joke each time the user taps its new-joke button",
   "type": "module",
+  "imports": {
+    "#/*": "./src/*"
+  },
   "engines": {
     "node": ">=24"
   },

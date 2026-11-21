@@ -1,4 +1,4 @@
-import type { JokeProvider } from '../jokes/types.ts';
+import type { JokeProvider } from '#/jokes/types.ts';
 import { EMPTY_TEXT_REPLY } from './constants.ts';
 import type { MessageHandler } from './types.ts';
 import { buildMessageReply, formatQuotedReplyText } from './utils.ts';

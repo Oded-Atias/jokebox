@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { JokeProvider } from '../jokes/types.ts';
+import type { JokeProvider } from '#/jokes/types.ts';
 import { createMessageHandler } from './handle-message.ts';
 import type { NewJokeMessageAction, NewJokeMessageInput, TextMessageInput } from './types.ts';
 

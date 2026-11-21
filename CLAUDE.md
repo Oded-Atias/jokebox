@@ -31,7 +31,11 @@ The project is built with TDD: every change starts with a failing test, then the
 
 ## TypeScript without a build step
 
-Node (>=24, developed on v26) runs `.ts` files directly via type stripping, so there is no `dist/` and no compile step. `tsconfig.json` is `noEmit` and exists only for type checking. It enforces what type stripping needs: relative imports include the `.ts` extension, type-only imports use `import type`, and no `enum`, `namespace` or constructor parameter properties (`erasableSyntaxOnly`).
+Node (>=24, developed on v26) runs `.ts` files directly via type stripping, so there is no `dist/` and no compile step. `tsconfig.json` is `noEmit` and exists only for type checking. It enforces what type stripping needs: imports of project files include the `.ts` extension, type-only imports use `import type`, and no `enum`, `namespace` or constructor parameter properties (`erasableSyntaxOnly`).
+
+## Imports
+
+`package.json` maps `#/*` to `./src/*` through Node's subpath `imports` field, which Node, `tsc` and Vitest all resolve with no extra setup. Import a file from another folder under `src/` with `#/` (`import type { JokeProvider } from '#/jokes/types.ts'`), and a file from the same folder with `./`. Never use `../`. Do not add `paths` to `tsconfig.json`: Node ignores it at runtime, so the code would type-check and then crash on `npm start`.
 
 ## Code style
 
