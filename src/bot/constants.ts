@@ -8,3 +8,5 @@ export const NEW_JOKE_MESSAGE_ACTION: NewJokeMessageAction = {
 };
 
 export const MAX_QUOTE_LENGTH = 50;
+
+export const EMPTY_TEXT_REPLY = 'Tap the button below for a random joke.';

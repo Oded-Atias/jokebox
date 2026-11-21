@@ -26,6 +26,16 @@ const MAX_LENGTH_TEXT_INPUT: TextMessageInput = {
   text: '01234567890123456789012345678901234567890123456789',
 };
 
+const EMPTY_TEXT_INPUT: TextMessageInput = {
+  kind: 'text',
+  text: '',
+};
+
+const WHITESPACES_ONLY_TEXT_INPUT: TextMessageInput = {
+  kind: 'text',
+  text: '     ',
+};
+
 describe('handleMessage', () => {
   it('should quote the input text in the reply', async () => {
     const handleMessage = createMessageHandler(JOKE_PROVIDER);
@@ -79,5 +89,21 @@ describe('handleMessage', () => {
     expect(result.text).toBe(
       'You said "01234567890123456789012345678901234567890123456789", but all I can do is tell jokes. Tap the button below for a random joke.'
     );
+  });
+
+  it('should return the fallback text when the user sends an empty text', async () => {
+    const handleMessage = createMessageHandler(JOKE_PROVIDER);
+
+    const result = await handleMessage(EMPTY_TEXT_INPUT);
+
+    expect(result.text).toBe('Tap the button below for a random joke.');
+  });
+
+  it('should return the fallback text when the user sends whitespace-only text', async () => {
+    const handleMessage = createMessageHandler(JOKE_PROVIDER);
+
+    const result = await handleMessage(WHITESPACES_ONLY_TEXT_INPUT);
+
+    expect(result.text).toBe('Tap the button below for a random joke.');
   });
 });
