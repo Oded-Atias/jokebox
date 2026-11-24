@@ -1,4 +1,4 @@
-import type { JokeProvider } from './types.ts';
+import type { JokeProvider } from '#/jokes/types.ts';
 
 export function createInMemoryJokeProvider(jokes: string[], random: () => number): JokeProvider {
   if (!jokes.length) {
